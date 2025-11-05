@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  streamconverter:
+    image: streamconverter
+    ports:
+      - "3334:3334"
+    volumes:
+      - ./scripts/streamconverter.sh:/usr/local/bin/streamconverter.sh
+    command: /usr/local/bin/streamconverter.sh
+
+  webstream:
+    image: webstream
+    volumes:
+      - ./scripts/webstream.sh:/usr/local/bin/webstream.sh
+      - ./hls:/hls
+    command: /usr/local/bin/webstream.sh
+    ports:
+      - "3334:3334"
+    restart: always
+
+volumes:
+  hls_data:
