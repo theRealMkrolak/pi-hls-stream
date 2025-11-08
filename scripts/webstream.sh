@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Default port if not provided
-PORT=${1:-8080}
-
 # MJPEG stream server using rpicam-vid
 # The stream will be available at http://localhost:${PORT}/stream.mjpg
 rpicam-vid \
@@ -11,5 +8,5 @@ rpicam-vid \
     --codec mjpeg \
     --inline \
     --listen 127.0.0.1 \
-    --port ${PORT} \
+    --port 8001 \
     --timeout 0
